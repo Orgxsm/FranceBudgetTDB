@@ -25,7 +25,7 @@ export default function BudgetCard({ section, index, onClick, totalBudget }: Bud
 
   return (
     <motion.button
-      className="card card-hover"
+      className="bt-card bt-card-hover"
       style={{ borderTop: `2px solid ${section.color}`, textAlign: "left", width: "100%", cursor: "pointer" }}
       onClick={onClick}
       variants={{

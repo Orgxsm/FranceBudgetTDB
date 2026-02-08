@@ -53,7 +53,7 @@ export default function DrillDownModal({ section, onClose }: Props) {
       onClick={onClose}
     >
       <motion.div
-        className="card"
+        className="bt-card"
         style={{ maxWidth: 620, width: "100%", maxHeight: "90vh", overflowY: "auto", borderTop: `2px solid ${section.color}` }}
         initial={{ scale: 0.92, y: 20 }}
         animate={{ scale: 1, y: 0 }}

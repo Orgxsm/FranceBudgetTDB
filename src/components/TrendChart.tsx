@@ -38,7 +38,7 @@ export default function TrendChart() {
 
   return (
     <motion.div
-      className="card"
+      className="bt-card"
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
