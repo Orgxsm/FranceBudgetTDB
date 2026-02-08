@@ -62,7 +62,7 @@ export default function ComparisonMode({ franceBudget }: Props) {
           transition={{ duration: 0.25 }}
         >
           {/* Metrics 2x2 */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 28 }}>
+          <div className="grid-compare" style={{ marginBottom: 28 }}>
             <MetricCard
               label="Prélèvements obligatoires"
               description="Part totale des impôts et cotisations sociales dans le PIB. Plus ce taux est élevé, plus la pression fiscale sur les ménages et entreprises est forte."
@@ -117,7 +117,7 @@ export default function ComparisonMode({ franceBudget }: Props) {
                 const delta = fr - cp
                 return (
                   <div key={sId} style={{ display: "flex", alignItems: "center", gap: 16, padding: "10px 16px", borderRadius: 10, background: "var(--bg-surface)" }}>
-                    <span style={{ fontSize: 13, color: "var(--text-secondary)", width: 120, flexShrink: 0 }}>
+                    <span className="comparison-label" style={{ fontSize: 13, color: "var(--text-secondary)", width: 120, flexShrink: 0 }}>
                       {sId.charAt(0).toUpperCase() + sId.slice(1)}
                     </span>
                     <div style={{ flex: 1, minWidth: 0 }}>

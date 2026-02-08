@@ -56,7 +56,7 @@ export default function HeaderScore({ data }: HeaderScoreProps) {
   ]
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 40 }}>
+    <div className="grid-metrics" style={{ marginBottom: 40 }}>
       {metrics.map((m, i) => (
         <motion.div
           key={m.label}

@@ -42,7 +42,7 @@ export default function DrillDownModal({ section, onClose }: Props) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: 24,
+        padding: 12,
         backdropFilter: "blur(24px)",
         WebkitBackdropFilter: "blur(24px)",
         background: "rgba(0,0,0,0.6)",
@@ -61,10 +61,10 @@ export default function DrillDownModal({ section, onClose }: Props) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
-          <div>
-            <h2 style={{ fontSize: 20, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>{section.title}</h2>
-            <p style={{ fontSize: 14, color: "var(--text-secondary)" }}>{section.description}</p>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 20 }}>
+          <div style={{ minWidth: 0 }}>
+            <h2 style={{ fontSize: 18, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>{section.title}</h2>
+            <p style={{ fontSize: 13, color: "var(--text-secondary)" }}>{section.description}</p>
           </div>
           <button
             onClick={onClose}
@@ -75,13 +75,13 @@ export default function DrillDownModal({ section, onClose }: Props) {
         </div>
 
         {/* Total + badge */}
-        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-          <p className="metric-value" style={{ fontSize: 28, color: section.color }}>{formatMd(section.totalAmount)}</p>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24, flexWrap: "wrap" }}>
+          <p className="metric-value" style={{ fontSize: 24, color: section.color }}>{formatMd(section.totalAmount)}</p>
           <span className={`badge ${status.badgeClass}`}>Efficience : {section.efficiency}/100</span>
         </div>
 
         {/* Chart + Items */}
-        <div style={{ display: "grid", gridTemplateColumns: "160px 1fr", gap: 20, marginBottom: 24 }}>
+        <div className="grid-modal-chart" style={{ marginBottom: 24 }}>
           <div style={{ height: 180 }}>
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -138,9 +138,9 @@ export default function DrillDownModal({ section, onClose }: Props) {
         </div>
 
         {/* OECD note */}
-        <div style={{ display: "flex", alignItems: "center", gap: 12, padding: 16, borderRadius: 12, background: "var(--bg-surface)", border: "1px solid var(--border-subtle)" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, padding: 14, borderRadius: 12, background: "var(--bg-surface)", border: "1px solid var(--border-subtle)" }}>
           <ArrowRight size={16} style={{ color: "var(--text-tertiary)", flexShrink: 0 }} />
-          <p style={{ fontSize: 13, color: "var(--text-secondary)" }}>
+          <p style={{ fontSize: 12, color: "var(--text-secondary)" }}>
             Efficience France ({section.efficiency}/100) vs Moyenne OCDE ({section.oecdAverage}/100) :{" "}
             <span className="font-mono" style={{ fontWeight: 600, color: section.efficiency >= section.oecdAverage ? "var(--color-green)" : "var(--color-red)" }}>
               {section.efficiency >= section.oecdAverage ? "+" : ""}{section.efficiency - section.oecdAverage} points

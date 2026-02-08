@@ -39,7 +39,7 @@ export default function EfficiencyComparison({ sections }: Props) {
       </h3>
       <div style={{ height: 260 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 20 }} barGap={4}>
+          <BarChart data={data} margin={{ top: 5, right: 5, left: 0, bottom: 20 }} barGap={4}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
             <XAxis dataKey="name" tick={{ fill: "var(--text-tertiary)", fontSize: 10 }} axisLine={{ stroke: "var(--border-subtle)" }} tickLine={false} angle={-25} textAnchor="end" height={50} />
             <YAxis tick={{ fill: "var(--text-tertiary)", fontSize: 10 }} axisLine={{ stroke: "var(--border-subtle)" }} tickLine={false} domain={[0, 100]} width={32} />

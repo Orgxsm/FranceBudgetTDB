@@ -11,6 +11,7 @@ import ComparisonMode from "@/components/ComparisonMode"
 import SimulationEngine from "@/components/SimulationEngine"
 import TrendChart from "@/components/TrendChart"
 import ThemeToggle from "@/components/ThemeToggle"
+import MobileNav from "@/components/MobileNav"
 import { BUDGET_DATA, AVAILABLE_YEARS, type BudgetYear } from "@/data/budget"
 import { BudgetSection } from "@/types/budget"
 
@@ -25,8 +26,11 @@ export default function DashboardPage() {
 
   return (
     <div className="page-wrapper">
-      {/* ── Top Bar ── */}
-      <nav className="top-bar">
+      {/* ── Mobile Nav ── */}
+      <MobileNav selectedYear={selectedYear} onYearChange={setSelectedYear} />
+
+      {/* ── Desktop Top Bar ── */}
+      <nav className="top-bar top-bar-desktop">
         <div className="flex items-center gap-3">
           <div
             className="flex items-center justify-center rounded-xl"
@@ -76,12 +80,12 @@ export default function DashboardPage() {
       <main className="page-content">
         {/* Title */}
         <div style={{ marginBottom: 32 }}>
-          <h1 style={{ fontSize: 28, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>
+          <h1 className="page-title" style={{ fontSize: 28, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>
             Budget Public France{" "}
             <span style={{ color: "var(--color-blue)" }}>{selectedYear}</span>
           </h1>
-          <p style={{ fontSize: 15, color: "var(--text-secondary)", marginTop: 6 }}>
-            Projet de Loi de Finances — Analyse détaillée des recettes, dépenses et efficience
+          <p className="page-subtitle" style={{ fontSize: 15, color: "var(--text-secondary)", marginTop: 6 }}>
+            Projet de Loi de Finances — Analyse détaillée
           </p>
         </div>
 
@@ -89,7 +93,7 @@ export default function DashboardPage() {
         <HeaderScore data={data} />
 
         {/* Budget Cards */}
-        <section style={{ marginBottom: 48 }}>
+        <section className="section-mb" style={{ marginBottom: 48 }}>
           <SectionTitle title="Répartition du Budget" subtitle={`${data.sections.length} postes · ${totalDepenses.toFixed(0)} Md€ de dépenses`} />
           <BudgetGrid
             sections={data.sections}
@@ -99,22 +103,22 @@ export default function DashboardPage() {
         </section>
 
         {/* Charts */}
-        <section style={{ marginBottom: 48 }}>
+        <section className="section-mb" style={{ marginBottom: 48 }}>
           <SectionTitle title="Efficience & Tendances" subtitle="Performance France vs OCDE et évolution sur 3 ans" />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+          <div className="grid-charts">
             <EfficiencyComparison sections={data.sections} />
             <TrendChart />
           </div>
         </section>
 
         {/* International */}
-        <section style={{ marginBottom: 48 }} id="comparison">
+        <section className="section-mb" style={{ marginBottom: 48 }} id="comparison">
           <SectionTitle title="Comparaison Internationale" subtitle="France vs Allemagne, États-Unis, Suède" />
           <ComparisonMode franceBudget={totalDepenses} />
         </section>
 
         {/* Simulator */}
-        <section style={{ marginBottom: 48 }} id="simulation">
+        <section className="section-mb" style={{ marginBottom: 48 }} id="simulation">
           <SectionTitle title="Simulateur Budgétaire" subtitle="Et si on réallouait les milliards différemment ?" />
           <SimulationEngine sections={data.sections} />
         </section>

@@ -13,7 +13,7 @@ interface BudgetGridProps {
 export default function BudgetGrid({ sections, onSectionClick, totalBudget }: BudgetGridProps) {
   return (
     <motion.div
-      style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}
+      className="grid-budget"
       initial="hidden"
       animate="visible"
       variants={{ visible: { transition: { staggerChildren: 0.07 } } }}

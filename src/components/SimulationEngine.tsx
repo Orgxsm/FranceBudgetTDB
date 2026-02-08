@@ -51,7 +51,7 @@ export default function SimulationEngine({ sections }: Props) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
         <div>
           <h3 style={{ fontSize: 15, fontWeight: 600, color: "var(--text-primary)" }}>
             Simulateur de Réallocation
@@ -80,7 +80,7 @@ export default function SimulationEngine({ sections }: Props) {
       </div>
 
       {/* Selectors */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 16, marginBottom: 20 }}>
+      <div className="grid-sim-select" style={{ marginBottom: 20 }}>
         <div>
           <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 8 }}>
             Retirer de…
@@ -92,7 +92,7 @@ export default function SimulationEngine({ sections }: Props) {
             ))}
           </select>
         </div>
-        <div style={{ display: "flex", alignItems: "flex-end", paddingBottom: 10 }}>
+        <div className="hidden md:flex" style={{ alignItems: "flex-end", paddingBottom: 10 }}>
           <ArrowRightLeft size={22} style={{ color: "var(--color-blue)" }} />
         </div>
         <div>
@@ -143,7 +143,7 @@ export default function SimulationEngine({ sections }: Props) {
                 <Zap size={14} style={{ display: "inline", marginRight: 6, color: "var(--color-amber)" }} />
                 Impact de la simulation
               </p>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+              <div className="grid-sim-impact">
                 <div>
                   <p style={{ fontSize: 13, color: "var(--color-red)", fontWeight: 600, marginBottom: 8 }}>{simulation.sourceImpact}</p>
                   {source && (

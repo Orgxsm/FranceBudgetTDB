@@ -48,7 +48,7 @@ export default function BudgetCard({ section, index, onClick, totalBudget }: Bud
       </h3>
 
       {/* Amount */}
-      <p className="metric-value" style={{ fontSize: 26, color: section.color, marginBottom: 6 }}>
+      <p className="metric-value" style={{ fontSize: 24, color: section.color, marginBottom: 6 }}>
         {formatMd(section.totalAmount)}
       </p>
 

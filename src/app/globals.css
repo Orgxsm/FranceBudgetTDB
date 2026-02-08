@@ -113,6 +113,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   .top-bar {
@@ -227,12 +228,50 @@
 }
 
 /* ── Responsive (outside layers for proper cascade) ── */
+
+/* Desktop top-bar hidden on mobile, shown on md+ */
+.top-bar-desktop { display: flex; }
+
+/* Responsive grids */
+.grid-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-budget { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-sim-select { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; }
+.grid-sim-impact { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-modal-chart { display: grid; grid-template-columns: 160px 1fr; gap: 20px; }
+
 @media (max-width: 1024px) {
   .top-bar { padding: 12px 32px; }
   .page-content { padding: 28px 32px 48px; }
+  .grid-metrics { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
   .top-bar { padding: 10px 20px; }
-  .page-content { padding: 20px 20px 40px; }
+  .top-bar-desktop { display: none; }
+  .page-content { padding: 16px 16px 32px; }
+
+  .grid-metrics { grid-template-columns: 1fr; gap: 12px; }
+  .grid-budget { grid-template-columns: 1fr; gap: 12px; }
+  .grid-charts { grid-template-columns: 1fr; gap: 16px; }
+  .grid-compare { grid-template-columns: 1fr; gap: 12px; }
+  .grid-sim-select { grid-template-columns: 1fr; gap: 12px; }
+  .grid-sim-impact { grid-template-columns: 1fr; gap: 12px; }
+  .grid-modal-chart { grid-template-columns: 1fr; gap: 12px; }
+
+  .page-title { font-size: 20px !important; }
+  .page-subtitle { font-size: 13px !important; }
+  .section-mb { margin-bottom: 28px !important; }
+
+  .bt-card { padding: 16px; }
+
+  .comparison-label { width: auto !important; min-width: 80px; }
+}
+
+@media (max-width: 480px) {
+  .page-content { padding: 12px 12px 24px; }
+  .grid-metrics { gap: 10px; }
+  .grid-budget { gap: 10px; }
+  .bt-card { padding: 14px; }
 }
