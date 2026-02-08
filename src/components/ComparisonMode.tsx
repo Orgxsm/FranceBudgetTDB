@@ -65,26 +65,32 @@ export default function ComparisonMode({ franceBudget }: Props) {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 28 }}>
             <MetricCard
               label="Prélèvements obligatoires"
+              description="Part totale des impôts et cotisations sociales dans le PIB. Plus ce taux est élevé, plus la pression fiscale sur les ménages et entreprises est forte."
               left={{ value: `${france.taxBurden}%`, color: "var(--color-amber)" }}
               right={{ value: `${selected.taxBurden}%`, color: "var(--color-green)" }}
               sub={`Delta : ${france.taxBurden - selected.taxBurden} points de PIB`}
             />
             <MetricCard
               label="Dette / PIB"
+              description="Ratio dette publique / PIB. Au-delà de 60% (critère de Maastricht), la soutenabilité budgétaire est considérée à risque. Au-delà de 100%, le pays doit plus qu'il ne produit en un an."
               left={{ value: `${france.debtRatio}%`, color: france.debtRatio > 90 ? "var(--color-red)" : "var(--color-amber)" }}
               right={{ value: `${selected.debtRatio}%`, color: selected.debtRatio > 90 ? "var(--color-red)" : "var(--color-green)" }}
               sub={`Écart : ${Math.abs(france.debtRatio - selected.debtRatio)} points`}
             />
             <MetricCard
               label="Ratio Impôt / Service"
+              description="Qualité des services publics obtenue pour chaque point de pression fiscale. Un ratio élevé signifie un meilleur retour sur investissement pour le contribuable (source : Legatum Prosperity Index)."
               left={{ value: String(franceTSR), color: franceTSR >= selectedTSR ? "var(--color-green)" : "var(--color-red)" }}
               right={{ value: String(selectedTSR), color: selectedTSR >= franceTSR ? "var(--color-green)" : "var(--color-red)" }}
               sub="Qualité de service / Pression fiscale"
             />
             <div style={{ background: savings > 0 ? "var(--color-green-dim)" : "var(--bg-surface)", border: savings > 0 ? "1px solid rgba(52,211,153,0.15)" : "1px solid var(--border-subtle)", borderRadius: 12, padding: 20 }}>
-              <p className="metric-label" style={{ marginBottom: 10 }}>
+              <p className="metric-label" style={{ marginBottom: 4 }}>
                 <TrendingDown size={12} style={{ display: "inline", marginRight: 4 }} />
                 Économie potentielle
+              </p>
+              <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 12, lineHeight: 1.5 }}>
+                Montant que la France économiserait (ou dépenserait en plus) si elle adoptait le même ratio de dépenses publiques / PIB que le pays sélectionné. Calcul basé sur le PIB français.
               </p>
               <p className="metric-value" style={{ fontSize: 24, color: savings > 0 ? "var(--color-green)" : "var(--color-red)" }}>
                 {savings > 0 ? "-" : "+"}{Math.abs(savings)} Md€
@@ -97,8 +103,11 @@ export default function ComparisonMode({ franceBudget }: Props) {
 
           {/* Efficiency bars */}
           <div>
-            <p style={{ fontSize: 14, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 12 }}>
+            <p style={{ fontSize: 14, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 4 }}>
               Efficience par secteur
+            </p>
+            <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 14, lineHeight: 1.5 }}>
+              Score de performance (0-100) par secteur basé sur les résultats obtenus pour les dépenses engagées. Un score supérieur indique une meilleure utilisation des fonds publics (sources : OCDE, Banque Mondiale).
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {sectionIds.map((sId) => {
@@ -143,15 +152,17 @@ export default function ComparisonMode({ franceBudget }: Props) {
   )
 }
 
-function MetricCard({ label, left, right, sub }: {
+function MetricCard({ label, left, right, sub, description }: {
   label: string
   left: { value: string; color: string }
   right: { value: string; color: string }
   sub: string
+  description: string
 }) {
   return (
     <div style={{ background: "var(--bg-surface)", borderRadius: 12, padding: 20, border: "1px solid var(--border-subtle)" }}>
-      <p className="metric-label" style={{ marginBottom: 10 }}>{label}</p>
+      <p className="metric-label" style={{ marginBottom: 4 }}>{label}</p>
+      <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 12, lineHeight: 1.5 }}>{description}</p>
       <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
         <span className="metric-value" style={{ fontSize: 22, color: left.color }}>{left.value}</span>
         <ArrowRight size={14} style={{ color: "var(--text-muted)" }} />
