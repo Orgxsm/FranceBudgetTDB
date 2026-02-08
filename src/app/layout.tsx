@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "BudgetTDB — Tableau de Bord du Budget Public Français",
   description:
     "Analyse interactive du budget de la France : recettes, dépenses, dette, comparaisons OCDE et simulateur de réallocation budgétaire.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 }
 
 export default function RootLayout({
