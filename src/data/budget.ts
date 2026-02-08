@@ -2,11 +2,11 @@ import { YearData } from "@/types/budget"
 
 export const BUDGET_2025: YearData = {
   year: 2025,
-  deficit: -5.1,
-  debtRatio: 112.5,
+  deficit: -5.8,
+  debtRatio: 113,
   totalRecettes: 287,
   totalDepenses: 492,
-  taxBurden: 45,
+  taxBurden: 43.5,
   sections: [
     {
       id: "recettes",
